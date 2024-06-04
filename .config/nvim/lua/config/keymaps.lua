@@ -4,6 +4,7 @@
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
+keymap.set("n", "x", '"_x')
 -- New tab
 keymap.set("n", "te", ":tabedit ")
 
@@ -19,3 +20,6 @@ keymap.set("n", "<S-CR>", '@="m`O<C-V><Esc>``"<CR>')
 
 -- Select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
+
+-- Save with leader w
+keymap.set("n", "<Leader>w", ":update<Return>")
