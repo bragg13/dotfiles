@@ -102,6 +102,11 @@ source $ZSH/oh-my-zsh.sh
 alias vpn="sudo openfortivpn vpn.eurecat.org:1443 -u andrea.bragante --trusted-cert 02a1c70a64129a83861eed78d5e045657aa18a34ac24916b7f0a928a5b1cfb5f"
 alias vim='nvim'
 alias dotconfig='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+[[ $NAME == 'DESKTOP-6T3GA44' ]] && export DESKTOP='/mnt/c/Users/bragg/Desktop/'
+[[ $NAME == 'DESKTOP-6T3GA44' ]] && export MEGA='/mnt/c/Users/bragg/Documents/MEGA/MEGA/'
+
+[[ $NAME == 'DESKTOP-BBMH4UA' ]] && export DESKTOP='/mnt/c/Users/Andrea/Desktop/'
+[[ $NAME == 'DESKTOP-BBMH4UA' ]] && export MEGA='/mnt/c/Users/Andrea/Downloads/andrea/'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
