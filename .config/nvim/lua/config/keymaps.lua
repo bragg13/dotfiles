@@ -29,5 +29,5 @@ keymap.set("n", "<C-a>", "gg<S-v>G")
 keymap.set("n", "<Leader>w", ":update<Return>")
 
 -- faster movement
-keymap.set("n", "J", "6j")
-keymap.set("n", "K", "6k")
+keymap.set("n", "J", "8j")
+keymap.set("n", "H", "8k")
