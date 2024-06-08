@@ -21,7 +21,7 @@ return {
 		"neovim/nvim-lspconfig",
 		init = function()
 			local keys = require("lazyvim.plugins.lsp.keymaps").get()
-			keys[#keys + 1] = {
+			keys[#keys + 2] = {
 				"gd",
 				function()
 					-- DO NOT RESUSE WINDOW
@@ -33,8 +33,10 @@ return {
 		end,
 		opts = {
 			inlay_hints = { enabled = false },
-			---@type lspconfig.options
 			servers = {
+				marksman = {
+					enabled = false,
+				},
 				cssls = {},
 				tailwindcss = {
 					root_dir = function(...)
@@ -137,8 +139,8 @@ return {
 								enable = false,
 								defaultConfig = {
 									indent_style = "space",
-									indent_size = "2",
-									continuation_indent_size = "2",
+									indent_size = "4",
+									continuation_indent_size = "4",
 								},
 							},
 						},
@@ -147,5 +149,18 @@ return {
 			},
 			setup = {},
 		},
+	},
+	{
+		require("null-ls").setup({
+			sources = {},
+			on_attach = function(client)
+				if client.server_capabilities.document_formatting then
+					client.server_capabilities.document_formatting = false
+				end
+				if client.server_capabilities.document_range_formatting then
+					client.server_capabilities.document_range_formatting = false
+				end
+			end,
+		}),
 	},
 }
