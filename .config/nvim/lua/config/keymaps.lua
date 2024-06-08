@@ -30,4 +30,4 @@ keymap.set("n", "<Leader>w", ":update<Return>")
 
 -- faster movement
 keymap.set("n", "J", "8j")
-keymap.set("n", "H", "8k")
+keymap.set("n", "U", "8k")
