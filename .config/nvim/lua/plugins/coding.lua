@@ -24,6 +24,11 @@ return {
 
 			local cmp = require("cmp")
 
+			-- If you want insert `(` after select function or method item
+			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+
+			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
 			opts.mapping = vim.tbl_extend("force", opts.mapping, {
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
@@ -74,5 +79,22 @@ return {
 				lint_events = { "BufWrite", "CursorHold" },
 			},
 		},
+	},
+	{
+		"kylechui/nvim-surround",
+		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
+	},
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
+		-- use opts = {} .......for. "{ [ passing ] }" setup options
+		-- this is equalent to setup({}) function
 	},
 }

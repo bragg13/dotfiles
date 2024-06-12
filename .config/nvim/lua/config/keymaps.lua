@@ -17,7 +17,7 @@ keymap.set("n", "<leader>qw", "<leader>bd")
 keymap.set("n", "<leader>t", ":Telescope ")
 
 -- remove recording q
-keymap.set("n", "q", "<Nop>")
+keymap.set("n", "<leader>t", ":Telescope ")
 
 -- insert blank line with CR
 keymap.set("n", "<CR>", '@="m`o<C-V><Esc>``"<CR>')
@@ -26,7 +26,11 @@ keymap.set("n", "<CR>", '@="m`o<C-V><Esc>``"<CR>')
 keymap.set("n", "<C-a>", "gg<S-v>G")
 
 -- Save with leader w
-keymap.set("n", "<Leader>w", ":update<Return>")
+keymap.set("n", "<Leader>w", ":w<Return>")
+
+-- remap undo
+-- keymap.set("n", "<BS>", "u")
+-- keymap.set("n", "u", "k")
 
 -- faster movement
 keymap.set("n", "J", "8j")
