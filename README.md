@@ -77,6 +77,9 @@ sudo apt install fzf
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 chsh -s $which(fish)
 
+; tpm and tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 ; eza
 sudo apt install -y gpg
 sudo mkdir -p /etc/apt/keyrings
