@@ -206,4 +206,9 @@ return {
 			require("telescope").load_extension("file_browser")
 		end,
 	},
+	{
+		"m4xshen/hardtime.nvim",
+		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+		opts = {},
+	},
 }

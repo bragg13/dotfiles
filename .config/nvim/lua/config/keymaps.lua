@@ -16,9 +16,6 @@ keymap.set("n", "<leader>qw", "<leader>bd")
 -- telescope with space t
 keymap.set("n", "<leader>t", ":Telescope ")
 
--- remove recording q
-keymap.set("n", "<leader>t", ":Telescope ")
-
 -- insert blank line with CR
 keymap.set("n", "<CR>", '@="m`o<C-V><Esc>``"<CR>')
 
@@ -35,3 +32,6 @@ keymap.set("n", "<Leader>w", ":w<Return>")
 -- faster movement
 keymap.set("n", "J", "8j")
 keymap.set("n", "U", "8k")
+
+-- faster pasting to replace a word
+keymap.set("n", "vv", "vep")

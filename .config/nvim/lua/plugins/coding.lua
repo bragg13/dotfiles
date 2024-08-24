@@ -87,6 +87,34 @@ return {
 		config = function()
 			require("nvim-surround").setup({
 				-- Configuration here, or leave empty to use defaults
+				surrounds = {
+					["c"] = {
+						add = function()
+							-- Get the current file extension
+							local ft = vim.bo.filetype
+
+							-- Define the surrounding strings based on file type
+							if ft == "javascriptreact" or ft == "javascript" or ft == "typescript" then
+								return {
+									{ "console.log(`${" }, -- start surround for JS/TS
+									{ "}`)" }, -- end surround for JS/TS
+								}
+							elseif ft == "python" then
+								return {
+									{ "print(f'{" }, -- start surround for Python
+									{ "}')" }, -- end surround for Python
+								}
+							else
+								-- Default surround if file type doesn't match
+								return {
+									{ "(" }, -- start surround default
+									{ ")" }, -- end surround default
+								}
+							end
+						end,
+						-- The 'find', 'delete', and 'change' options can be set similarly if needed
+					},
+				},
 			})
 		end,
 	},
