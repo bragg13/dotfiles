@@ -15,6 +15,8 @@ brew "tree"
 brew "git-delta"
 brew "gh"
 brew "pre-commit"
+brew "navi"
+brew "csvlens"
 
 # Editors / TUI
 brew "neovim"
