@@ -5,3 +5,4 @@ dot_config/fish/conf.d/nix-env.fish
 dot_config/nvim/lua/config/*.swp
 dot_config/zed/prompts/
 dot_config/zellij/plugins/*.wasm
+dot_config/zed/mobile-app
