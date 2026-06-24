@@ -1,0 +1,34 @@
+#!/bin/bash
+set -e
+
+PROFILE="{{ .profile }}"
+OS="{{ .chezmoi.os }}"
+
+if [ "$OS" = "darwin" ] && [ "$PROFILE" = "full" ]; then
+  echo "==> Installing packages via Homebrew..."
+  brew bundle install --file="{{ .chezmoi.sourceDir }}/Brewfile"
+
+elif [ "$OS" = "linux" ] && [ "$PROFILE" = "linux" ]; then
+  echo "==> Installing packages via apt..."
+  bash "{{ .chezmoi.sourceDir }}/scripts/linux-install.sh"
+
+elif [ "$PROFILE" = "minimal" ]; then
+  echo "==> Installing minimal packages (nvim + lazygit)..."
+
+  if [ "$OS" = "darwin" ]; then
+    brew install neovim lazygit
+
+  elif [ "$OS" = "linux" ]; then
+    sudo apt-get update -y
+    sudo apt-get install -y neovim
+
+    # lazygit not in apt, install from GitHub releases
+    LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" \
+      | grep '"tag_name"' | sed 's/.*"v\([^"]*\)".*/\1/')
+    curl -Lo /tmp/lazygit.tar.gz \
+      "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+    tar -xf /tmp/lazygit.tar.gz -C /tmp lazygit
+    sudo install /tmp/lazygit /usr/local/bin
+    rm /tmp/lazygit.tar.gz /tmp/lazygit
+  fi
+fi

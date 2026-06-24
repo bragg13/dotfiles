@@ -1,0 +1,6 @@
+[[language]]
+name = "python"
+file-types = ["py"]
+formatter = { command = "ruff", args = ["format", "--stdin-filename", "file.py", "-"] }
+auto-format = true
+

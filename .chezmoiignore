@@ -1,0 +1,20 @@
+{{- if eq .profile "minimal" }}
+.config/fish
+.config/kitty
+.config/zed
+.config/zellij
+.config/helix
+.config/karabiner
+.config/raycast
+.config/uv
+{{ end -}}
+
+{{- if eq .profile "linux" }}
+.config/karabiner
+.config/raycast
+.config/kitty
+{{ end -}}
+
+{{- if eq .profile "full" }}
+scripts/linux-install.sh
+{{ end -}}

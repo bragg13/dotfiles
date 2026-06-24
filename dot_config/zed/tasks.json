@@ -1,0 +1,41 @@
+// Project tasks configuration. See https://zed.dev/docs/tasks for documentation.
+[
+  {
+    "label": "ESLint: check workspace",
+    "command": "npx eslint .",
+    "allow_concurrent_runs": false,
+    "use_new_terminal": true,
+    "reveal_target": "center",
+  },
+  {
+    "label": "Run Ruff  and Ty on current file",
+    "command": "ruff check $ZED_FILE && ty check $ZED_FILE",
+    "allow_concurrent_runs": false,
+    "reveal": "never",
+  },
+  {
+    "label": "Fix current file linting issues",
+    "command": "npx eslint $ZED_FILE --fix",
+    "allow_concurrent_runs": false,
+    "reveal": "never",
+  },
+  {
+    "label": "Build for iOS",
+    "command": "npm run ios-device -- --device=\"iPhone di Andrea\"",
+    "allow_concurrent_runs": false,
+    "reveal_target": "center",
+  },
+  {
+    "label": "Build for Android",
+    "command": "npm run android -- --active-arch-only",
+    "allow_concurrent_runs": false,
+    "reveal_target": "center",
+  },
+  {
+    "label": "Open Lazygit",
+    "command": "lazygit",
+    "allow_concurrent_runs": false,
+    "use_new_terminal": true,
+    "reveal_target": "center",
+  },
+]

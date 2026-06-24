@@ -1,0 +1,7 @@
+# Nix fish integration (machine-specific)
+dot_config/fish/conf.d/nix-env.fish
+
+# Runtime / generated
+dot_config/nvim/lua/config/*.swp
+dot_config/zed/prompts/
+dot_config/zellij/plugins/*.wasm

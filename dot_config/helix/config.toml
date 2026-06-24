@@ -1,0 +1,77 @@
+theme = "catppuccin_mocha"
+
+[editor]
+line-number = "relative"
+cursorline = true
+mouse = true
+color-modes = true
+bufferline = "always" # Enable tab bar at the top
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+# File explorer configuration
+[editor.file-picker]
+hidden = false
+parents = false
+
+[editor.soft-wrap]
+enable = true
+
+# Do not render white spaces
+[editor.whitespace]
+render = "none"
+
+[editor.indent-guides]
+render = true
+skip-levels = 1
+
+# LSP Server configuration
+[editor.lsp]
+display-messages = true
+auto-signature-help	= true
+display-signature-help-docs	= true
+
+[keys.normal]
+D = "kill_to_line_end"
+"C-h" = "jump_view_left"
+"C-l" = "jump_view_right"
+"C-k" = "jump_view_up"
+"C-j" = "jump_view_down"
+"H" = "goto_previous_buffer"
+"L" = "goto_next_buffer"
+"K" = "hover"
+"J" = ["move_visual_line_down","move_visual_line_down","move_visual_line_down","move_visual_line_down","move_visual_line_down","move_visual_line_down","move_visual_line_down","move_visual_line_down"]
+"U" = ["move_visual_line_up","move_visual_line_up","move_visual_line_up","move_visual_line_up","move_visual_line_up","move_visual_line_up","move_visual_line_up","move_visual_line_up"]
+"ret" = ["open_below", "normal_mode", "move_line_up"]
+
+[keys.normal.g]
+c = "toggle_comments"
+
+# ── all space-prefixed bindings in ONE block ──
+[keys.normal.space]
+f = "file_picker"
+"/" = "global_search"
+c = "code_action"
+"|" = "vsplit"
+"-" = "hsplit"
+s = ":write"
+
+[keys.normal.space.l]
+f = ":format"
+
+[keys.normal.space.b]
+d = ":buffer-close"
+
+[keys.normal.space.w]
+d = ":quit"
+
+[keys.insert]
+"S-space" = "completion"
+"C-p" = ["normal_mode", "paste_after", "insert_mode"]
+
+[keys.select]
+"J" = "extend_line_below"
+"K" = "extend_line_above"

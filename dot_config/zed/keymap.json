@@ -1,0 +1,89 @@
+[
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "shift-space": "editor::ShowCompletions",
+      // paste while staying in insert mode
+      "ctrl-p": ["workspace::SendKeystrokes", "escape p i"],
+    },
+  },
+  // select pane using ctrl + h, j, k, l
+  {
+    "context": "Dock || Terminal || (Editor && vim_mode == normal) || ProjectPanel",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "shift-h": "pane::ActivatePreviousItem", // move between panes
+      "shift-l": "pane::ActivateNextItem",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "space f": "file_finder::Toggle",
+      "space s": "project_symbols::Toggle",
+
+      "shift-k": "editor::Hover",
+      "space l f": "editor::Format",
+      "space d": "diagnostics::Deploy",
+      "space /": "workspace::NewSearch",
+      "n": "search::SelectNextMatch",
+      "shift-n": "search::SelectPreviousMatch",
+      "space t": "workspace::NewCenterTerminal",
+      "g c": "editor::ToggleComments",
+      "space b": "editor::OpenExcerpts",
+
+      // code actions
+      "space c": "editor::ToggleCodeActions",
+
+      // imported from neovim
+      "space |": "pane::SplitRight", // split
+      "space -": "pane::SplitUp",
+      "space w d": "pane::CloseActiveItem", // close panes
+      "space w": "workspace::Save", // save
+      "space b d": "pane::CloseActiveItem", // close buffer
+      "enter": ["workspace::SendKeystrokes", "o escape k"], // mimic the insert enter
+      "space e": "workspace::ToggleLeftDock", // toggle file explorer
+      "shift-u": ["workspace::SendKeystrokes", "8 k"], // fast movement
+      "shift-j": ["workspace::SendKeystrokes", "8 j"],
+      "v v": ["workspace::SendKeystrokes", "v e p"], // faster word paste
+
+      "` `": ["workspace::SendKeystrokes", "z z"], // z key on keyboard is weird to reach
+      "` enter": ["workspace::SendKeystrokes", "z enter"], // z key on keyboard is weird to reach
+    },
+  },
+  {
+    // move lines up and down - with shift, not alt!
+    "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
+    "bindings": {
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp",
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-l": ["terminal::SendKeystroke", "ctrl-l"],
+    },
+  },
+  // completions menu
+  {
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "bindings": {
+      "ctrl-p": "editor::ContextMenuPrevious",
+    },
+  },
+  {
+    "context": "(Workspace && !Terminal)",
+    "bindings": {
+      "cmd-t": [
+        "task::Spawn",
+        {
+          "reveal_target": "center",
+        },
+      ],
+    },
+  },
+]

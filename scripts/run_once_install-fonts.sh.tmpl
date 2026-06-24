@@ -1,0 +1,20 @@
+#!/bin/bash
+{{ if eq .profile "minimal" }}exit 0{{ end }}
+{{ if eq .chezmoi.os "darwin" }}exit 0{{ end }}  # macOS: handled by Brewfile cask
+
+echo "==> Installing DaddyTimeMono Nerd Font..."
+
+FONT_DIR="$HOME/.local/share/fonts"
+mkdir -p "$FONT_DIR"
+
+LATEST=$(curl -s "https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest" \
+  | grep '"tag_name"' | sed 's/.*"\([^"]*\)".*/\1/')
+
+curl -Lo /tmp/DaddyTimeMono.tar.xz \
+  "https://github.com/ryanoasis/nerd-fonts/releases/download/${LATEST}/DaddyTimeMono.tar.xz"
+
+tar -xf /tmp/DaddyTimeMono.tar.xz -C "$FONT_DIR"
+rm /tmp/DaddyTimeMono.tar.xz
+
+fc-cache -fv "$FONT_DIR"
+echo "==> Font installed."
